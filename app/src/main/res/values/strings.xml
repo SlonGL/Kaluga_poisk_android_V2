@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Калуга-поиск</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Калуга-поиск</string>
+    <string name="nav_header_subtitle">it.studio.slon@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_auth__new">Аутентификация</string>
+
+
+    <!--Значения для Auth0-->
+    <string name="com_auth0_client_id">poDaTZFxLxoZZae4ZI7J4unbvXwekMsq</string>
+    <string name="com_auth0_domain">kaluga.auth0.com</string>
+
+
+    <!--Замена текстам аудио рекордера на русские-->
+    <string name="aar_save">Сохранить</string>
+    <string name="aar_paused">Пауза</string>
+    <string name="aar_recording">Запись</string>
+    <string name="aar_playing">Воспроизведение</string>
+
+    <!--ioneday image selector-->
+    <string name="picture">Изображения</string>
+    <string name="all_image">Все изображения</string>
+    <string name="take_picture">Сделать фото</string>
+    <string name="preview">Превью</string>
+    <string name="preview_num">Превью(%1$s)</string>
+    <string name="choose">Выбрать</string>
+    <string name="done">Готово</string>
+    <string name="use">OK</string>
+    <string name="num_postfix">%1$s</string>
+    <string name="done_num">Готово(%1$s/%2$s)</string>
+    <string name="message_max_num">До %1$s фотографий может быть выбрано</string>
+    <string name="save_ing">Сохранение изображения…</string>
+
+</resources>

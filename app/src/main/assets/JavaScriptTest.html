@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <script>
+
+        // Блок получения аудио файла
+
+        ;(function(){
+            function audioFileReceiver(audio_m4a_base64_string) {
+                document.getElementById('audio_string').value = audio_m4a_base64_string;
+                return 'Audio received';
+            };
+            window.audioFileReceiver = audioFileReceiver;
+        }());
+
+        // Конец блока получения аудио файла
+
+        // Начало блока получения фото
+
+        ;(function(){
+            function photoFileReceiver(photo_jpeg_base64_string) {
+                document.getElementById('photo_string').value = audio_m4a_base64_string;
+                return 'Photo received';
+            };
+            window.audioFileReceiver = audioFileReceiver;
+        }());
+
+        // Конец обработки получения файла с фото
+
+    </script>
+</head>
+
+<body>
+<button onclick='window.audioFileReceiver("TEST DIRECT")'>Это прямая кнопка</button>
+<button onclick='window.JSInterface.getAudio()'>Нажмите кнопку для аудио</button>
+<p>Тут выводится строка Base64 содержащая аудио файл</p>
+<input type='text' height = '200' name='audio_in_base64' id='audio_string' value='Пока что ничего нет'><br><br>
+
+<button onclick='window.JSInterface.getPhoto()'>Нажмите кнопку для фото</button>
+<p>Тут выводится строка Base64 содержащая фото файл в Jpeg</p>
+<input type='text' height = '200' name='photo_in_base64' id='photo_string' value='Пока что ничего нет'><br><br>
+
+<input type='text' height = '200' name='photo_in_base64' id='audio_test' value=photoFileReceiver('TEST').toString()><br><br>
+<input type='text' height = '200' name='photo_in_base64' id='photo_test' value=audioFileReceiver('TEST').toString()><br><br>
+</body>
+</html>

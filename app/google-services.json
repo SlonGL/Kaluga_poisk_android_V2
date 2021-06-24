@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "342984781231",
+    "firebase_url": "https://kaluga-poisk-39da4.firebaseio.com",
+    "project_id": "kaluga-poisk-39da4",
+    "storage_bucket": "kaluga-poisk-39da4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342984781231:android:095e21cc6cce9c37",
+        "android_client_info": {
+          "package_name": "ru.kaluga_poisk.portalkalugapoisk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342984781231-6mknvn69v1djgefscp10rgisapti5t5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJdz3OommY2luGcRZvWSBUByW0e4LLMog"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
