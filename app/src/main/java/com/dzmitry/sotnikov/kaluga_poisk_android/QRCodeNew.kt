@@ -1,7 +1,7 @@
 package ru.kaluga_poisk.portalkalugapoisk
 
 import android.Manifest
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView

@@ -3,11 +3,11 @@ package ru.kaluga_poisk.portalkalugapoisk
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageButton
 import android.content.Context
-import android.support.design.widget.TextInputEditText
+import com.google.android.material.textfield.TextInputEditText
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.widget.Toast
@@ -54,12 +54,12 @@ class Auth_New : AppCompatActivity() {
 
         val mPrefs = getPreferences(MODE_PRIVATE)
 
-        userInfo.user_nickname = mPrefs!!.getString("user_nickname", "")
-        userInfo.user_name = mPrefs!!.getString("user_name", "")
-        userInfo.user_familyname = mPrefs!!.getString("user_familyname", "")
-        userInfo.user_birthday = mPrefs!!.getString("user_birthday", "")
-        userInfo.user_phone = mPrefs!!.getString("user_phone", "")
-        userInfo.user_photo_file_name = mPrefs!!.getString("user_photo_file_name", "")
+        userInfo.user_nickname = mPrefs!!.getString("user_nickname", "") ?: ""
+        userInfo.user_name = mPrefs!!.getString("user_name", "") ?: ""
+        userInfo.user_familyname = mPrefs!!.getString("user_familyname", "") ?: ""
+        userInfo.user_birthday = mPrefs!!.getString("user_birthday", "") ?: ""
+        userInfo.user_phone = mPrefs!!.getString("user_phone", "") ?: ""
+        userInfo.user_photo_file_name = mPrefs!!.getString("user_photo_file_name", "") ?: ""
         if (userInfo.user_photo_file_name > "") {
             needToLoadPhoto = true
         }
@@ -164,22 +164,25 @@ class Auth_New : AppCompatActivity() {
                     authentication
                         .userInfo(auth0token)
                         .start(object : BaseCallback<UserProfile, AuthenticationException> {
-                            override fun onSuccess(information: UserProfile) {
-                                //user information received
-                                runOnUiThread {
-                                    auth_ti_nickname.setText(information.nickname)
-                                    auth_ti_name.setText(information.givenName)
-                                    auth_ti_familyname.setText(information.familyName)
-                                    val bm = BitmapFactory.decodeFile(information.pictureURL)
-                                    if (bm != null) {
-                                        userPhotoImageButton?.setImageBitmap(bm)
-                                    }
-                                }
-                            }
 
                             override fun onFailure(error: AuthenticationException) {
                                 //user information request failed
                                 runOnUiThread { Toast.makeText(window.context, "Ошибка аутентификации: " + error.description, Toast.LENGTH_SHORT).show() }
+                            }
+
+                            override fun onSuccess(payload: UserProfile?) {
+                                //user information received
+                                runOnUiThread {
+                                    payload?.let {
+                                        auth_ti_nickname.setText(it.nickname)
+                                        auth_ti_name.setText(it.givenName)
+                                        auth_ti_familyname.setText(it.familyName)
+                                        val bm = BitmapFactory.decodeFile(it.pictureURL)
+                                        if (bm != null) {
+                                            userPhotoImageButton?.setImageBitmap(bm)
+                                        }
+                                    }
+                                }
                             }
                         })
                 }

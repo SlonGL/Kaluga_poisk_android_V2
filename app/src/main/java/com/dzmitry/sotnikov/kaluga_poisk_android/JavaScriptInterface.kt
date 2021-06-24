@@ -1,12 +1,12 @@
 package ru.kaluga_poisk.portalkalugapoisk
 
-import android.support.v4.content.ContextCompat.startActivity
+import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
 import android.webkit.JavascriptInterface
 import android.app.Activity
 import android.net.Uri
 import android.os.Environment
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
