@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="47dp"
-        tools:context=".Auth_New">
+        tools:context="com.dzmitry.sotnikov.kaluga_poisk_android.Auth_New">
 
     <LinearLayout
             android:layout_width="wrap_content"

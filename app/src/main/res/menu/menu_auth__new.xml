@@ -1,5 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="ru.kaluga_poisk.portalkalugapoisk.Auth_New">
+      tools:context="ru.kaluga_poisk.portalkalugapoisk.com.dzmitry.sotnikov.kaluga_poisk_android.Auth_New">
 </menu>

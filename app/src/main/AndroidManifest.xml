@@ -32,7 +32,7 @@
         </activity>
 
         <activity
-                android:name=".Auth_New"
+                android:name="com.dzmitry.sotnikov.kaluga_poisk_android.Auth_New"
                 android:label="@string/title_activity_auth__new"
                 android:theme="@style/AppTheme.NoActionBar"
                 android:screenOrientation="portrait">
@@ -71,7 +71,8 @@
         <activity
                 android:name=".SplashActivity"
                 android:theme="@style/SplashTheme"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

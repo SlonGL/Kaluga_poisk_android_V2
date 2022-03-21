@@ -12,7 +12,6 @@ import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.webkit.WebView
 import android.widget.*
-import kotlinx.android.synthetic.main.content_main.*
 import java.net.URLEncoder
 import java.util.ArrayList
 import java.util.HashMap
@@ -21,15 +20,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.core.content.ContextCompat
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import android.webkit.WebSettings
+import com.dzmitry.sotnikov.kaluga_poisk_android.Auth_New
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
@@ -95,7 +93,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         checkPermissions()
 
-        webView_internal = webView
+        webView_internal = findViewById<WebView>(R.id.webView)
         webViewContext = baseContext
 
         mySearchTextFieldLayout = findViewById(R.id.searchTextFieldLayout) as TextInputLayout
@@ -142,8 +140,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val backButton = findViewById(R.id.backButton) as FloatingActionButton
         backButton.setOnClickListener(View.OnClickListener { view ->
             hideSearchBar()
-            if (webView.canGoBack()) {
-                webView.goBack()
+            if (findViewById<WebView>(R.id.webView).canGoBack()) {
+                findViewById<WebView>(R.id.webView).goBack()
             }
         })
 
@@ -173,11 +171,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         FirebaseMessaging.getInstance().isAutoInitEnabled = true
 
         val webViewClient = MyWebViewClient()
-        webView.setWebViewClient(webViewClient)
+        findViewById<WebView>(R.id.webView).setWebViewClient(webViewClient)
 
-        webView.settings.javaScriptEnabled = true
+        findViewById<WebView>(R.id.webView).settings.javaScriptEnabled = true
 
-        val webSettings = webView.getSettings()
+        val webSettings = findViewById<WebView>(R.id.webView).getSettings()
         webSettings.setJavaScriptEnabled(true)
         webSettings.setDomStorageEnabled(true)
         webSettings.setLoadWithOverviewMode(true)
@@ -186,13 +184,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         webSettings.setDisplayZoomControls(false)
         webSettings.setSupportZoom(true)
         webSettings.setDefaultTextEncodingName("utf-8")
-        webView.getSettings().setPluginState(WebSettings.PluginState.ON)
+        findViewById<WebView>(R.id.webView).getSettings().setPluginState(WebSettings.PluginState.ON)
 
 
         val jsInterface = JavaScriptInterface(this)
-        webView.addJavascriptInterface(jsInterface, "JSInterface")
+        findViewById<WebView>(R.id.webView).addJavascriptInterface(jsInterface, "JSInterface")
 
-        webView.loadUrl(siteURL + "?gp=1&device=android&version=2")
+        findViewById<WebView>(R.id.webView).loadUrl(siteURL + "?gp=1&device=android&version=2")
 
         // webView.loadUrl("file:///android_asset/JavaScriptTest.html")
         // webView.loadUrl("http://obninsk-poisk.ru/testjs")
@@ -288,8 +286,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
-            if (webView.canGoBack()) {
-                webView.goBack()
+            if (findViewById<WebView>(R.id.webView).canGoBack()) {
+                findViewById<WebView>(R.id.webView).goBack()
             }
         }
     }
@@ -398,7 +396,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     // val jsInterface = JavaScriptInterface(this)
                     // webView.settings.javaScriptEnabled = true
                     // webView.addJavascriptInterface(jsInterface, "JSInterface")
-                    webView.loadUrl(headerList[groupPosition].url + "?gp=1&device=android&version=2")
+                    findViewById<WebView>(R.id.webView).loadUrl(headerList[groupPosition].url + "?gp=1&device=android&version=2")
                     onBackPressed()
                 }
             }
@@ -414,7 +412,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     // val jsInterface = JavaScriptInterface(this)
                     // webView.settings.javaScriptEnabled = true
                     // webView.addJavascriptInterface(jsInterface, "JSInterface")
-                    webView.loadUrl(model.url + "?gp=1&device=android&version=2")
+                    findViewById<WebView>(R.id.webView).loadUrl(model.url + "?gp=1&device=android&version=2")
                     onBackPressed()
                 }
             }
@@ -468,9 +466,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val searchString = URLEncoder.encode(mySearchTextField.text.toString(), "UTF-8")
         val url = "https://www.kaluga-poisk.ru/search?search=" + searchString + "&gp=1&device=android&version=2"
         val jsInterface = JavaScriptInterface(this)
-        webView.settings.javaScriptEnabled = true
-        webView.addJavascriptInterface(jsInterface, "JSInterface")
-        webView.loadUrl(url)
+        findViewById<WebView>(R.id.webView).settings.javaScriptEnabled = true
+        findViewById<WebView>(R.id.webView).addJavascriptInterface(jsInterface, "JSInterface")
+        findViewById<WebView>(R.id.webView).loadUrl(url)
     }
 
     fun hideKeyboard(activityContext: Context) {

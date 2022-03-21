@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import com.yongchun.library.view.ImageSelectorActivity
 import android.os.StrictMode
+import com.dzmitry.sotnikov.kaluga_poisk_android.needToLoadPhoto
 import java.io.ByteArrayOutputStream
 import java.net.URLEncoder
 

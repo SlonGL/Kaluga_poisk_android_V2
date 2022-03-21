@@ -1,4 +1,4 @@
-package ru.kaluga_poisk.portalkalugapoisk
+package com.dzmitry.sotnikov.kaluga_poisk_android
 
 import android.app.Dialog
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.content.Context
 import com.google.android.material.textfield.TextInputEditText
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationAPIClient
@@ -18,8 +20,8 @@ import com.auth0.android.callback.BaseCallback
 import com.auth0.android.provider.AuthCallback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
-import kotlinx.android.synthetic.main.content_auth__new.*
 import com.auth0.android.result.UserProfile
+import ru.kaluga_poisk.portalkalugapoisk.*
 
 
 var needToLoadPhoto = false
@@ -67,10 +69,10 @@ class Auth_New : AppCompatActivity() {
         if (userInfo.user_photo_file_name != "" && needToLoadPhoto) {
             userPhotoImageButton?.setImageBitmap(BitmapFactory.decodeFile(userInfo.user_photo_file_name))
         }
-        auth_ti_nickname.setText(userInfo.user_nickname)
-        auth_ti_name.setText(userInfo.user_name)
-        auth_ti_familyname.setText(userInfo.user_familyname)
-        auth_ti_birthday.setText(userInfo.user_birthday)
+        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_nickname).setText(userInfo.user_nickname)
+        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_name).setText(userInfo.user_name)
+        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_familyname).setText(userInfo.user_familyname)
+        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_birthday).setText(userInfo.user_birthday)
     }
 
     // Обработка нажатия на фото
@@ -174,9 +176,9 @@ class Auth_New : AppCompatActivity() {
                                 //user information received
                                 runOnUiThread {
                                     payload?.let {
-                                        auth_ti_nickname.setText(it.nickname)
-                                        auth_ti_name.setText(it.givenName)
-                                        auth_ti_familyname.setText(it.familyName)
+                                        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_nickname).setText(it.nickname)
+                                        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_name).setText(it.givenName)
+                                        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.auth_ti_familyname).setText(it.familyName)
                                         val bm = BitmapFactory.decodeFile(it.pictureURL)
                                         if (bm != null) {
                                             userPhotoImageButton?.setImageBitmap(bm)
